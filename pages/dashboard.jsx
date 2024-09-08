@@ -26,7 +26,7 @@ function DashobardUser() {
             .catch((err) => {
                 console.error(err);
             });
-    }, [choosenCate , sort]);
+    }, [choosenCate, sort]);
 
 
     useEffect((e) => {
@@ -137,13 +137,13 @@ function DashobardUser() {
             <div className="mainParent">
                 {filtered.map((data) => (
                     <Link to={`/product/${data.id}`} key={data.id} id="mainParentDiv" className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                        <a className="block relative h-48 rounded overflow-hidden">
+                        <div className="block relative h-48 rounded overflow-hidden">
                             <img
                                 alt="ecommerce"
                                 className="object-cover object-center w-full h-full block"
                                 src={data.images}
                             />
-                        </a>
+                        </div>
                         <div className="mt-4">
                             <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                                 {data.category}

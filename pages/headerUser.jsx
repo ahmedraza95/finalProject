@@ -15,9 +15,6 @@ export default function HeaderUser() {
 
         }
     }
-    onAuthStateChanged(auth, (user) => {
-        setEmail(user.email)
-    })
 
     const menuItems = [
         "Logout",
