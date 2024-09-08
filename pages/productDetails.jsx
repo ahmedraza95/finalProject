@@ -22,7 +22,7 @@ function Productdetails() {
 
                 <div className="card">
                     <div className="flex justify-center items-center object-fill image_container">
-                        <img width='80%' src={data.images} alt="" />
+                        <img width='60%' src={data.images} alt="" />
                     </div>
                     <div className="nameBrand ">
                         <span className="text-blue-400-500">{data.brand}</span>

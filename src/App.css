@@ -24,6 +24,10 @@
 
   border-radius: 1rem;
 }
+.label {
+  color:grey;
+  font-size:10px;
+}
 .nameBrand {
   color:grey;
 }
@@ -31,8 +35,7 @@
   color:grey;
   margin-right:4%;
 }
-.card {
-}
+
 
 .image_container {
   overflow: hidden;
@@ -523,6 +526,10 @@ body {
 }
 
 .Category {
+  display:flex;
+  justify-content:center;
+  /* align-items:center; */
+  flex-direction:column;
   width: 30%;
 }
 #mainDiveSec {

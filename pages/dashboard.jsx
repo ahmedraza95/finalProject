@@ -83,6 +83,7 @@ function DashobardUser() {
                     <div className="divOptions">
 
                         <div className="Category">
+                                    <label className="label">Category</label>
                             <Dropdown>
                                 <DropdownTrigger>
                                     <Button
@@ -112,6 +113,7 @@ function DashobardUser() {
 
                         </div>
                         <div id="divMain" className="Category">
+                            <label className="label">Sorting</label>
                             <Dropdown>
                                 <DropdownTrigger>
                                     <Button

@@ -59,6 +59,11 @@ export default function Headerloginsignup() {
                             Login
                         </Mylink>
                     </Button>
+                    <Button className="ml-2" color="warning" href="#" variant="flat">
+                        <Mylink to={'/dashboard'}>
+                            Products
+                        </Mylink>
+                    </Button>
                 </NavbarItem>
             </NavbarContent>
 
