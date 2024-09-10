@@ -1,12 +1,30 @@
 import { useEffect, useState } from "react";
 import HeaderUser from "./headerUser";
 import React from "react";
-import { Input } from "@nextui-org/react";
+import { Input, User } from "@nextui-org/react";
 import { SearchIcon } from "../props/seach";
 // import React from "react";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase/firebase";
+
+
 function DashobardUser() {
+    const navigate = useNavigate()
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            user ? (
+                navigate('/dashboard')
+
+
+            ) : (
+                navigate('/login')
+            )
+        })
+
+    }, []
+    )
 
     const [post, setPost] = useState([]);
     const [news, setNews] = useState([]);
@@ -41,7 +59,7 @@ function DashobardUser() {
 
     return (
         <>
-            <HeaderUser />
+
             <div className="divMainBig">
 
                 <div id="SearchIcon">
@@ -83,7 +101,7 @@ function DashobardUser() {
                     <div className="divOptions">
 
                         <div className="Category">
-                                    <label className="label">Category</label>
+                            <label className="label">Category</label>
                             <Dropdown>
                                 <DropdownTrigger>
                                     <Button

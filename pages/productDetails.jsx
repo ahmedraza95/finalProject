@@ -17,7 +17,7 @@ function Productdetails() {
 
     return (
         <>
-            <HeaderUser />
+
             <section className="mt-2 flex h-200 w-60 justify-center items-center">
 
                 <div className="card">

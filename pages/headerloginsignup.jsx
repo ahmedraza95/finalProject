@@ -1,12 +1,20 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button, Avatar } from "@nextui-org/react";
-import React from "react";
-import { onAuthStateChanged } from "../firebase/firebase";
+import { React, useState, useContext } from "react";
 import { Link as Mylink } from "react-router-dom";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { createuserContext } from "../context/headerContext";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
+import { auth } from "../firebase/firebase";
+import { div } from "framer-motion/client";
 export default function Headerloginsignup() {
+
+    const { User } = useContext(createuserContext)
+
     const menuItems = [
         "Login",
         "Signup",
     ];
+    console.log(User);
 
     return (
 
@@ -20,7 +28,11 @@ export default function Headerloginsignup() {
 
             <NavbarContent className="sm:hidden pr-3" justify="center">
                 <NavbarBrand>
-                    <Avatar />
+                    <Avatar src={
+                        User.isLogin ? (
+                            User.userInfo.photoUrl
+                        ) : null
+                    } />
                 </NavbarBrand>
             </NavbarContent>
 
@@ -48,24 +60,51 @@ export default function Headerloginsignup() {
                 <NavbarItem className="hidden lg:flex">
                     <Link href="#">Login</Link>
                 </NavbarItem>
-                <NavbarItem>
-                    <Button color="warning" href="#" variant="flat">
-                        <Mylink to={'/signup'}>
-                            Sign Up
-                        </Mylink>
-                    </Button>
-                    <Button className="ml-2" color="warning" href="#" variant="flat">
-                        <Mylink to={'/login'}>
-                            Login
-                        </Mylink>
-                    </Button>
-                    <Button className="ml-2" color="warning" href="#" variant="flat">
-                        <Mylink to={'/dashboard'}>
-                            Products
-                        </Mylink>
-                    </Button>
-                </NavbarItem>
-            </NavbarContent>
+                {User.isLogin ? (
+                    <Dropdown>
+                        <DropdownTrigger>
+                            <Button
+                                variant="bordered"
+                            >
+                                See More
+                            </Button>
+                        </DropdownTrigger>
+                        <DropdownMenu aria-label="Static Actions">
+                            <DropdownItem key="new">{User.userInfo.email}</DropdownItem>
+                            {
+                                User.userInfo.name ? (
+                                    <DropdownItem key="new">
+                                        {User.userInfo.name}
+                                    </DropdownItem>
+
+                                ) : null
+                            }
+
+                            <DropdownItem onClick={async () => {
+                                await signOut(auth)
+                            }} key="edit">Log Out</DropdownItem>
+
+                        </DropdownMenu>
+                    </Dropdown>
+                )
+                    : (
+                        <NavbarItem>
+                            <Button color="warning" href="#" variant="flat">
+                                <Mylink to={'/signup'}>
+                                    Sign Up
+                                </Mylink>
+                            </Button>
+                            <Button className="ml-2" color="warning" href="#" variant="flat">
+                                <Mylink to={'/login'}>
+                                    Login
+                                </Mylink>
+                            </Button>
+                        </NavbarItem >
+                        // console.log('hello');
+
+                    )
+                }
+            </NavbarContent >
 
             <NavbarMenu>
                 {menuItems.map((item, index) => (
@@ -83,6 +122,6 @@ export default function Headerloginsignup() {
                     </NavbarMenuItem>
                 ))}
             </NavbarMenu>
-        </Navbar>
+        </Navbar >
     );
 }
