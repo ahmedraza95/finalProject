@@ -6,10 +6,16 @@ import { createuserContext } from "../context/headerContext";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
 import { auth } from "../firebase/firebase";
 import { div } from "framer-motion/client";
+import { ShoppingCartOutlined } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import { addItemToLocalStorage, getItemsFromLocalStorage } from "../firebase/localstorage";
+import { CartContext } from "../context/cartContext";
 export default function Headerloginsignup() {
+    const { products } = useContext(CartContext);
 
     const { User } = useContext(createuserContext)
-
     const menuItems = [
         "Login",
         "Signup",
@@ -33,7 +39,13 @@ export default function Headerloginsignup() {
                             User.userInfo.photoUrl
                         ) : null
                     } />
+                    <Button>
+                        <Mylink to={'/dashboard'} >
+                            Products
+                        </Mylink>
+                    </Button>
                 </NavbarBrand>
+
             </NavbarContent>
 
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
@@ -60,32 +72,42 @@ export default function Headerloginsignup() {
                 <NavbarItem className="hidden lg:flex">
                     <Link href="#">Login</Link>
                 </NavbarItem>
+
+                <Mylink to={'/cart'}>
+                    <IconButton aria-label="cart">
+                        <Badge badgeContent={products.length} color="secondary">
+                            <ShoppingCartOutlined />
+                        </Badge>
+                    </IconButton>
+                </Mylink>
                 {User.isLogin ? (
-                    <Dropdown>
-                        <DropdownTrigger>
-                            <Button
-                                variant="bordered"
-                            >
-                                See More
-                            </Button>
-                        </DropdownTrigger>
-                        <DropdownMenu aria-label="Static Actions">
-                            <DropdownItem key="new">{User.userInfo.email}</DropdownItem>
-                            {
-                                User.userInfo.name ? (
-                                    <DropdownItem key="new">
-                                        {User.userInfo.name}
-                                    </DropdownItem>
+                    <>
+                        <Dropdown>
+                            <DropdownTrigger>
+                                <Button
+                                    variant="bordered"
+                                >
+                                    See More
+                                </Button>
+                            </DropdownTrigger>
+                            <DropdownMenu aria-label="Static Actions">
+                                <DropdownItem key="new">{User.userInfo.email}</DropdownItem>
+                                {
+                                    User.userInfo.name ? (
+                                        <DropdownItem key="new">
+                                            {User.userInfo.name}
+                                        </DropdownItem>
 
-                                ) : null
-                            }
+                                    ) : null
+                                }
 
-                            <DropdownItem onClick={async () => {
-                                await signOut(auth)
-                            }} key="edit">Log Out</DropdownItem>
+                                <DropdownItem onClick={async () => {
+                                    await signOut(auth)
+                                }} key="edit">Log Out</DropdownItem>
 
-                        </DropdownMenu>
-                    </Dropdown>
+                            </DropdownMenu>
+                        </Dropdown>
+                    </>
                 )
                     : (
                         <NavbarItem>

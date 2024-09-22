@@ -8,7 +8,7 @@ import {
     onAuthStateChanged,
     signOut,
 } from "firebase/auth";
-
+import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
     apiKey: "AIzaSyB3jZ1obvW_8DTS_6UTI5DnE9DjB91FJTk",
     authDomain: "react-19f5c.firebaseapp.com",
@@ -21,6 +21,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 const analytics = getAnalytics(app);
 
 export {
@@ -30,4 +31,5 @@ export {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
     signOut,
+    db
 };

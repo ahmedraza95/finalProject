@@ -20,6 +20,7 @@ function Signup() {
             navigate('/dashboard')
         } catch (error) {
             console.log("wrong");
+            setloading(false)
 
         }
 
@@ -28,11 +29,11 @@ function Signup() {
 
     }
     async function GoogleLogin() {
+        setloading(true)
         const provider = new GoogleAuthProvider();
         provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
         signInWithPopup(auth, provider)
             .then((result) => {
-                setloading(true)
                 navigate("/dashboard");
                 setloading(false)
             })

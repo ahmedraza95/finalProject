@@ -10,21 +10,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 
 
-function DashobardUser() {
-    const navigate = useNavigate()
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            user ? (
-                navigate('/dashboard')
-
-
-            ) : (
-                navigate('/login')
-            )
-        })
-
-    }, []
-    )
+function DashobardUser() {  
 
     const [post, setPost] = useState([]);
     const [news, setNews] = useState([]);

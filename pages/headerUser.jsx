@@ -4,6 +4,7 @@ import { Link as Mylink } from "react-router-dom";
 import { signOut, auth } from "../firebase/firebase.js";
 import { onAuthStateChanged } from "../firebase/firebase.js";
 export default function HeaderUser() {
+    
     const [loader, setloader] = useState(false)
     const [email, setEmail] = useState(false)
     async function signout() {
@@ -12,15 +13,16 @@ export default function HeaderUser() {
             await signOut(auth)
             setloader(false)
         } catch (error) {
-
+            
         }
     }
-
+    
     const menuItems = [
         "Logout",
     ];
 
     return (
+        
         <Navbar disableAnimation isBordered>
             <NavbarContent className="sm:hidden" justify="start">
                 <NavbarMenuToggle />

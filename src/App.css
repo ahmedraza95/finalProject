@@ -208,11 +208,106 @@
   gap: 10px;
   justify-content: space-between;
 }
+#btnCheckOut{
+  position: fixed;
+  top: 80%;
+  left: 88%;
+}
 
 .flex-row > div > label {
   font-size: 14px;
   color: black;
   font-weight: 400;
+}
+.minusParent {
+  width:30%;
+  display: flex;
+}
+.lastDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin-left: ; */
+}
+
+.cartMain {
+  display: flex;
+  flex-direction: column;
+}
+.typeFont {
+  width: 100%;
+  display: flex;
+}
+#btn{
+  width: 20%;
+  font-size: 1.6rem !important;
+}
+.number {
+  width: 93%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  /* margin-bottom: %; */
+  /* justify-content: center; */
+}
+
+.plus {
+  width: 10% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem !important;
+  border-radius: 10px;
+  color: white;
+  background-color: #2d79f3;
+}
+.detailss {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 60%;
+}
+.itemsarr {
+  display: flex;
+  border: 2px solid black;
+  margin-top: 4%;
+  height: 15vh;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+/* .parentFinal {
+  justify-content: ;
+} */
+
+#MainDivAll > div {
+  width: 30%;
+  display: flex;
+  flex-wrap: wrap;
+}
+#MainDivAll {
+  display: flex;
+  flex-wrap: wrap !important;
+  width: 100%;
+}
+.topDetailsCart {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+
+}
+.topDetailsCart >span {
+  border: 1px solid black;
+  width: 25%;
+  height: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
 }
 
 .span {

@@ -13,6 +13,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { auth, onAuthStateChanged } from '../firebase/firebase'
+import CartDetails from '../pages/cartDetails'
 
 
 function App() {
@@ -25,10 +26,11 @@ function App() {
         <Headerloginsignup />
         <Routes>
           <Route path='/login' element={<Login />} />
-          <Route path='/' element={<Login />} />
+          <Route path='/' element={<DashobardUser />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/dashboard' element={<DashobardUser />} />
           <Route path='/product/:id' element={<Productdetails />} />
+          <Route path='/cart' element={<CartDetails />} />
         </Routes>
 
       </BrowserRouter>
